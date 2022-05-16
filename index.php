@@ -28,7 +28,7 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color:gray;
   color: white;
 }
  .button {
@@ -46,12 +46,11 @@
 .button5 {background-color: #555555;} /* Black */
 }
 </style>
-	<meta charset="utf-8">
+	
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Rubic landing page.">
     <meta name="author" content="Devcrud">
-    <title>Rubic Landing page | Free Bootstrap 4.1 landing page</title>
-    <!-- font icons -->
+    <!-- eto manao titre -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Rubic main styles -->
 	<link rel="stylesheet" href="assets/css/rubic.css">
@@ -65,8 +64,15 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="connecter.php"><button class="button button5">Se Connecter</button></a>
+                    </li>
+            </ul>
+          </div>
+        </div>
         </div>
     </nav>
         </div>          
@@ -82,16 +88,20 @@
    				 <th>resume</th>
    				 <th>DateContenu</th>
    				 <th>titre</th>
-           <th><b><a href="connecter.php">Se Connecter</th></a></b>
    				</tr>
+          <p><b>
       <?php 
  		while ($contenu=mysqli_fetch_assoc($resultat)) {	?>
  			<tr>
+
 
  		<td><p><?php echo $contenu['Contenu'] ?></p></li></td>
  			<td><p><?php echo $contenu['resume']?></p></td>
  			<td><p><?php echo $contenu['dateContenu']?></p></td>
  			<td><P><?php echo $contenu['titre']?></P></td>
+      <td><a href="detail.php?idContenu=<?php echo $contenu['idContenu']?>"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="70" fill="currentColor" class="bi bi-view-list" viewBox="0 0 16 16">
+  <path d="M3 4.5h10a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H3zM1 2a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 2zm0 12a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 14z"/>
+</svg></a></td>
  		</tr>
  			<?php } 
   ?>
@@ -103,7 +113,7 @@
 
     <footer class="footer py-4 bg-dark text-light"> 
         <div class="container text-center">
-            <p class="mb-4 small">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">DevCRUD</a></p>
+            <p class="mb-4 small">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">Carolrinah</a></p>
             <div class="social-links">
                 <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
                 <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>

@@ -18,14 +18,18 @@
     //echo $valiny;
     header('Location:accueil.php');
   }
-   
+  $idContenu=$_GET['idContenu'];
+  include "connexion.php";
+  $sql='SELECT * from contenu where idContenu='.$idContenu;
+  $sql=sprintf($sql);
+  $resultat=mysqli_query($connection,$sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <style >
     *{
-      padding:5px;
+      padding:2px;
 
     }
   </style>
@@ -33,7 +37,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Rubic landing page.">
     <meta name="author" content="Devcrud">
-    <title>Rubic Landing page | Free Bootstrap 4.1 landing page</title>
+    <title>modification</title>
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Rubic main styles -->
@@ -64,21 +68,24 @@
               <div class="col-md-5 d-none d-md-block">
                     <form class="header-form" method="POST">
                         <div class="body">
-  
-                            <div class="form-group">
-                                <input type="text" class="form-control" value=""  name="contenu" placeholder="Contenu*">
-            
+
+        <?php 
+    while ($contenu=mysqli_fetch_assoc($resultat)) {?>
+            <div class="form-group">
+                <textarea class="form-control"  name="contenu" style="height:200px"><?php echo $contenu['Contenu']?></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="texte" class="form-control" name="resume"placeholder="Resume*">
+                                <textarea  class="form-control"  name="resume" style="height:100px"><?php echo $contenu['resume']?></textarea>
                             </div>
                             <div>
-                              <input type="date" class="form-control" name="daty"placeholder="Date*">
+                              <input type="date" value="<?php echo $contenu['dateContenu']?>" class="form-control" name="daty"placeholder="Date*">
                             </div>
                             <div>
-                              <input type="texte" class="form-control" name="title"placeholder="Le titre*">
+                              <textarea   type="texte" class="form-control" name="title"><?php echo $contenu['titre']?></textarea>
                             </div>
                         </div>
+                    <?php }
+                        ?>
                         
    <?php 
     while ($contenu=mysqli_fetch_assoc($resultat)) {  ?>
@@ -104,7 +111,7 @@
 
     <footer class="footer py-4 bg-dark text-light"> 
         <div class="container text-center">
-            <p class="mb-4 small">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">DevCRUD</a></p>
+            <p class="mb-4 small">Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a href="http://www.devcrud.com">Carolrinah</a></p>
             <div class="social-links">
                 <a href="javascript:void(0)" class="link"><i class="ti-facebook"></i></a>
                 <a href="javascript:void(0)" class="link"><i class="ti-twitter-alt"></i></a>

@@ -1,6 +1,7 @@
 Options +FollowSymlinks
 RewriteEngine On
 RewriteRule ^/?.*/?.*-([_a-z0-9]*).html$  delete.php?idContenu=$1&url=exemple-idcontenu[L]
+RewriteRule ^/?.*/?.*-([_a-z0-9]*).html$  detail.php?idContenu=$1&url=exemple-idcontenu[L]
 RewriteRule ^/?.*/?.*-([_a-z0-9]*).html$  modification.php?idContenu=$1&url=exemple-idcontenu[L]
 RewriteRule ^/?.*/?.*-([_a-z0-9]*).html$  accueil.php?idContenu=$1&url=exemple-idcontenu[L]
 

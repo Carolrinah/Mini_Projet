@@ -1,34 +1,66 @@
-<?php 
-include"connexion.php";
-  if(isset($_POST['add'])){
-    $contenu=$_POST['contenu'];
-    $resume=$_POST['resume'];
-    $daty=$_POST['daty'];
-    $titre=$_POST['title'];
-    $sql='INSERT into  contenu (contenu,resume,dateContenu,titre) 
-    values("%s","%s","%s","%s");';
-    $sql=sprintf($sql,$contenu,$resume,$daty,$titre);
-    echo $sql;
-    $valiny=mysqli_query($connection,$sql);
-    //echo $valiny;
-    header('Location:accueil.php');
-  }
-   
-?>
+<?php
+  $idContenu=$_GET['idContenu'];
+  include "connexion.php";
+  $sql='SELECT * from contenu where idContenu='.$idContenu;
+  $sql=sprintf($sql);
+  $resultat=mysqli_query($connection,$sql);
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style >
+	<style>
     *{
+      border:10px;
       padding:5px;
-
     }
-  </style>
-	<meta charset="utf-8">
+	#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+ .button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+} 
+.button5 {background-color: #555555;} /* Black */
+.container1{
+  border: solid 2px black;
+  width:60%;
+  height:300px;
+  margin-left:300px;
+  }
+}
+</style>
+	
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with Rubic landing page.">
     <meta name="author" content="Devcrud">
-    <title>Ajout</title>
+    <title>index</title>
     <!-- font icons -->
     <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
     <!-- Bootstrap + Rubic main styles -->
@@ -36,7 +68,6 @@ include"connexion.php";
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
-    <h1><center>Ajouter un Contenu</center></h1>
 
     <nav id="scrollspy" class="navbar page-navbar navbar-dark navbar-expand-md fixed-top" data-spy="affix" data-offset-top="20">
         <div class="container">
@@ -45,43 +76,28 @@ include"connexion.php";
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               
-            </div>
+            
         </div>
     </nav>
         </div>          
     </div>
     <section class="section">
-        <div class="container">
-          <div class="container1">
-            <div class="row justify-content-around">
-                <!-- Eto za manao modif -->
-              <div class="col-md-5 d-none d-md-block">
-                    <form class="header-form" method="POST">
-                        <div class="body">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="contenu" placeholder="Contenu*">
-                            </div>
-                            <div class="form-group">
-                                <input type="texte" class="form-control" name="resume"placeholder="Resume*">
-                            </div>
-                            <div>
-                              <input type="date" class="form-control" name="daty"placeholder="Date*">
-                            </div>
-                            <div>
-                              <input type="texte" class="form-control" name="title"placeholder="Le titre*">
-                            </div>
-                        </div>
-<button name="add"  class="btn btn-primary btn-block"><b>ajouter </b></button>
-                        </div>
-                    </form> 
+        <div class="container1">
 
-                    </div>
-
-                </div>
-            </div>  
-        </div>
+            
+                <!-- Eto za mampiseo contenu -->
+         <?php 
+    while ($contenu=mysqli_fetch_assoc($resultat)) {?>
+      <center>
+      <h2><?php echo $contenu['titre']?></h2>
+       </center>
+      <p><b>Contenu:</b><?php echo $contenu['Contenu'] ?></p>
+      <p><b>Resume:</b><?php echo $contenu['resume'] ?></p>
+      <p><b>Le:</b><?php echo $contenu['dateContenu']?></p>
+     
+      <?php } 
+  ?>
+ 
 
             </div>                  
         </div>                      
@@ -109,6 +125,5 @@ include"connexion.php";
 
     <!-- Rubic js -->
     <script src="assets/js/rubic.js"></script>
-
 </body>
 </html>
