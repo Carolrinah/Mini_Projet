@@ -14,7 +14,7 @@
     $sql='UPDATE contenu set contenu="%s",resume="%s",dateContenu="%s",titre="%s" where idContenu='.$idContenu;
     $sql=sprintf($sql,$contenu,$resume,$daty,$titre);
     //echo $sql;
-    $valiny=mysqli_query($connection,$sql);
+    $valiny=mysqli_query(connecter(),$sql);
     //echo $valiny;
     header('Location:accueil.php');
   }

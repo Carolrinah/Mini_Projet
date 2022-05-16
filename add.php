@@ -9,7 +9,7 @@ include"connexion.php";
     values("%s","%s","%s","%s");';
     $sql=sprintf($sql,$contenu,$resume,$daty,$titre);
     echo $sql;
-    $valiny=mysqli_query($connection,$sql);
+    $valiny=mysqli_query($connecter(),$sql);
     //echo $valiny;
     header('Location:accueil.php');
   }

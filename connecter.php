@@ -1,3 +1,29 @@
+<?php
+    include ("connexion.php");
+function loggin($nom,$mdp){
+    $sql='SELECT * from user where user="%s" and mdp="%s";';
+        $sql=sprintf($sql,$nom,$mdp);
+         echo $sql;
+         $valiny=mysqli_query(connecter(),$sql);
+         $i=0;
+          while ($user=mysqli_fetch_assoc($valiny)) { 
+                         $i++;
+                         }
+            return $i;
+}
+    if(isset($_POST['log'])) {
+    $email=$_POST['email'];
+    $code=$_POST['mdp'];
+    $resultat=loggin($email,$code);
+    if($resultat==1){
+        header('Location: accueil.php');
+                }
+            else{
+             header('Location: connecter.php');
+                        }
+          
+          }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +63,7 @@
                     </div>  
                 </div>
                 <div class="col-md-5 d-none d-md-block">
-                    <form class="header-form" action="accueil.php" method="GET">
+                    <form class="header-form" action="connecter.php" method="POST">
                         <div class="head">Try your <span class="text-primary">Free</span> trial today.</div>
                         <div class="body">
                             <div class="form-group">
@@ -48,7 +74,7 @@
                             </div>
                         </div>
                         <div class="footer">
-                            <button class="btn btn-primary btn-block">Se connecter</button>
+                            <button class="btn btn-primary btn-block" name="log">Se connecter</button>
                         </div>
                     </form> 
                 </div>

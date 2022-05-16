@@ -1,8 +1,8 @@
 <?php
 	include"connexion.php";
-	if(isset($_GET['log'])){
-		$mailaka=$_GET['email'];
-		echo $mailaka;
-		$code=$_GET['mdp'];
-	}
+	
+  $sql='SELECT * from user where email="%s" and mdp="%s";';
+  $sql=sprintf($sql);
+  //echo $sql;
+  $resultat=mysqli_query($connection,$sql);
 ?>

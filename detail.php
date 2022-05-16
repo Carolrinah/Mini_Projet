@@ -3,7 +3,7 @@
   include "connexion.php";
   $sql='SELECT * from contenu where idContenu='.$idContenu;
   $sql=sprintf($sql);
-  $resultat=mysqli_query($connection,$sql);
+  $resultat=mysqli_query(connecter(),$sql);
  ?>
 <!DOCTYPE html>
 <html lang="en">

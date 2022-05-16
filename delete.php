@@ -5,7 +5,7 @@
   	$sql='DELETE from contenu where idContenu='.$idContenu;
   	echo $sql;
 	$sql=sprintf($sql,$idContenu);
-	$resultat=mysqli_query($connection,$sql);
+	$resultat=mysqli_query(connecter(),$sql);
 	header('Location: accueil.php');
 	}		
 ?>
