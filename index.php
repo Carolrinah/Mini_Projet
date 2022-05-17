@@ -1,6 +1,6 @@
 <?php
  include"connexion.php";
-  $sql='SELECT * from contenu ';
+  $sql='SELECT * from Contenu ';
   $sql=sprintf($sql);
   //echo $sql;
   $resultat=mysqli_query(connecter(),$sql);
@@ -91,10 +91,8 @@
    				</tr>
           <p><b>
       <?php 
- 		while ($contenu=mysqli_fetch_assoc($resultat)) {	?>
+ 		while ($Contenu=mysqli_fetch_assoc($resultat)) {	?>
  			<tr>
-
-
  		<td><p><?php echo $contenu['Contenu'] ?></p></li></td>
  			<td><p><?php echo $contenu['resume']?></p></td>
  			<td><p><?php echo $contenu['dateContenu']?></p></td>
